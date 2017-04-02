@@ -17,6 +17,12 @@
 QUESTION_NUM=10
 TEAM_NUM=10
 
+usage(){
+cat <<_EOL_
+Usage:
+	$0 -c 参加者用物理NIC [-m 管理用物理NIC] -t チーム数 -v 問題数 [オプション]
+_EOL_
+}
 # make-vlan($interface,$vlannum);
 function make-vlan(){
 	vconfig add $1 $2
