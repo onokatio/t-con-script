@@ -55,14 +55,11 @@ function configure-container-vlan(){
 }
 
 
-for i in {11..15};do make-vlan pc-eth0 $i;done
-for i in {11..15};do make-bridge $i;done
-for i in {11..15};do add-vnic-to-bridge pc-eth0 $i;done
-for i in {11..15};do
-	for j in {1..10};do
-		( make-container ubuntu $i $j && configure-container-vlan $i $j )&
+for i in {11..11};do make-vlan pc-eth0 $i;done
+for i in {11..11};do make-bridge $i;done
+for i in {11..11};do add-vnic-to-bridge pc-eth0 $i;done
+for i in {11..11};do
+	for j in {1..1};do
+		make-container ubuntu $i $j && configure-container-vlan $i $j
 	done
 done
-for i in {11..15};do for j in {11..15};do stop-container $i $j;done;done
-for i in {11..15};do rm-bridge $i;done
-for i in {11..15};do rm-vlan pc-eth0 $i;done
