@@ -59,7 +59,7 @@ echo 1
 start-container q12-1
 echo 1
 lxc exec q12-1 -- ip addr add 192.168.12.1/24 dev eth0
-
+lxc exec q12-1 -- ip route add default via 192.168.12.254
 lxc exec q12-1 -- /bin/bash
 echo 1
 stop-container q12-1
